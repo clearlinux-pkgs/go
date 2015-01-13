@@ -1,0 +1,13 @@
+Index: go/src/net/parse_test.go
+===================================================================
+--- go.orig/src/net/parse_test.go
++++ go/src/net/parse_test.go
+@@ -17,7 +17,7 @@ func TestReadLine(t *testing.T) {
+ 	case "android", "plan9", "windows":
+ 		t.Skipf("not supported on %s", runtime.GOOS)
+ 	}
+-	filename := "/etc/services" // a nice big file
++	filename := "/usr/share/defaults/etc/services" // a nice big file
+ 
+ 	fd, err := os.Open(filename)
+ 	if err != nil {

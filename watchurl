@@ -1,0 +1,1 @@
+watchurl=http://golang.org/dl/ https://storage.googleapis.com/golang/go(\d[\d.]*).src.tar.gz

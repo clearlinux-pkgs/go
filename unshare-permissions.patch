@@ -1,0 +1,13 @@
+Index: go/src/syscall/exec_linux_test.go
+===================================================================
+--- go.orig/src/syscall/exec_linux_test.go
++++ go/src/syscall/exec_linux_test.go
+@@ -47,6 +47,8 @@ func testNEWUSERRemap(t *testing.T, uid,
+ 			data, errRead := ioutil.ReadFile("/proc/sys/kernel/unprivileged_userns_clone")
+ 			if errRead == nil && data[0] == '0' {
+ 				t.Skip("kernel prohibits user namespace in unprivileged process")
++			} else {
++				t.Skip("permissions error")
+ 			}
+ 		}
+ 

@@ -1,0 +1,296 @@
+From 655ebde9ae43e9679df963402436d1f1ff6a3be6 Mon Sep 17 00:00:00 2001
+From: Uttam C Pawar <uttam.c.pawar@intel.com>
+Date: Mon, 29 Jun 2015 15:24:24 -0700
+Subject: [PATCH] bytes: Improve Compare() function for various sizes on x86 platform
+
+New change shows performance improvement ranging from 0.5% to 32%.
+Following is the benchcmp output.
+
+$ benchcmp go.head.old.txt go.head.new.txt
+benchmark                             old ns/op     new ns/op     delta
+BenchmarkBytesCompare1-8              4.76          4.77          +0.21%
+BenchmarkBytesCompare2-8              4.77          4.77          +0.00%
+BenchmarkBytesCompare4-8              4.76          4.77          +0.21%
+BenchmarkBytesCompare8-8              3.65          3.64          -0.27%
+BenchmarkBytesCompare16-8             3.95          3.99          +1.01%
+BenchmarkBytesCompare32-8             4.72          4.71          -0.21%
+BenchmarkBytesCompare64-8             6.17          6.27          +1.62%
+BenchmarkBytesCompare128-8            9.13          8.23          -9.86%
+BenchmarkBytesCompare256-8            14.4          12.0          -16.67%
+BenchmarkBytesCompare512-8            31.0          19.4          -37.42%
+BenchmarkBytesCompare1024-8           51.8          34.4          -33.59%
+BenchmarkBytesCompare2048-8           95.8          65.0          -32.15%
+BenchmarkBytesCompareRandom1-8        4.84          4.79          -1.03%
+BenchmarkBytesCompareRandom2-8        4.84          4.81          -0.62%
+BenchmarkBytesCompareRandom4-8        4.84          4.79          -1.03%
+BenchmarkBytesCompareRandom8-8        4.56          4.51          -1.10%
+BenchmarkBytesCompareRandom16-8       4.28          4.22          -1.40%
+BenchmarkBytesCompareRandom32-8       4.50          4.52          +0.44%
+BenchmarkBytesCompareRandom64-8       4.50          4.53          +0.67%
+BenchmarkBytesCompareRandom128-8      4.50          4.45          -1.11%
+BenchmarkBytesCompareRandom256-8      4.50          4.45          -1.11%
+BenchmarkBytesCompareRandom512-8      4.50          4.45          -1.11%
+BenchmarkBytesCompareRandom1024-8     4.50          4.47          -0.67%
+BenchmarkBytesCompareRandom2048-8     4.50          4.45          -1.11%
+
+Change contains,
+1) unrolling loop for size larger than 79.
+2) Inlining of runtime.cmpbody() in runtime.Compare().
+   There are more regressions between inline and non-inline version
+
+Following is the benchcmp output between inlined-vs-non-inlined version
+
+$ benchcmp go.head.inline.txt go.head.noinline.txt
+benchmark                             old ns/op      new ns/op    delta
+BenchmarkBytesCompare1-8              4.77            4.74        -0.63%
+BenchmarkBytesCompare2-8              4.77            4.74        -0.63%
+BenchmarkBytesCompare4-8              4.77            4.74        -0.63%
+BenchmarkBytesCompare8-8              3.64            3.60        -1.10%
+BenchmarkBytesCompare16-8             3.97            4.04        +1.76%
+BenchmarkBytesCompare32-8             4.71            4.77        +1.27%
+BenchmarkBytesCompare64-8             6.23            6.37        +2.25%
+BenchmarkBytesCompare128-8            8.23            8.44        +2.55%
+BenchmarkBytesCompare256-8            12.0            12.1        +0.83%
+BenchmarkBytesCompare512-8            19.4            19.3        -0.52%
+BenchmarkBytesCompare1024-8           34.5            34.1        -1.16%
+BenchmarkBytesCompare2048-8           64.6            63.8        -1.24%
+
+Change-Id: I81b8de9f20356c76b4d6ba47a4b7e4d4de619140
+---
+
+diff --git a/src/bytes/bytesCompare_test.go b/src/bytes/bytesCompare_test.go
+new file mode 100644
+index 0000000..e52ea6c
+--- /dev/null
++++ b/src/bytes/bytesCompare_test.go
+@@ -0,0 +1,65 @@
++// Copyright 2015 The Go Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style
++// license that can be found in the LICENSE file.
++
++package bytes_test
++
++import (
++	"bytes"
++	"math/rand"
++	"testing"
++)
++
++var letters = []byte("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
++
++var g int = 0
++
++func Seq(n int, random bool) []byte {
++	var b []byte
++	b = make([]byte, n)
++	if random {
++		for i := range b {
++			b[i] = letters[rand.Intn(len(letters))]
++		}
++	} else {
++		for i := range b {
++			b[i] = 'a'
++		}
++	}
++	return b
++}
++
++func benchmarkBytesCompare(i int, random bool, b *testing.B) {
++	var w int = i
++	var x = []byte(Seq(w, random))
++	var y = []byte(Seq(w, random))
++	for i := 0; i < b.N; i++ {
++		g = bytes.Compare(x, y)
++	}
++}
++
++func BenchmarkBytesCompare1(b *testing.B)    { benchmarkBytesCompare(1, false, b) }
++func BenchmarkBytesCompare2(b *testing.B)    { benchmarkBytesCompare(2, false, b) }
++func BenchmarkBytesCompare4(b *testing.B)    { benchmarkBytesCompare(4, false, b) }
++func BenchmarkBytesCompare8(b *testing.B)    { benchmarkBytesCompare(8, false, b) }
++func BenchmarkBytesCompare16(b *testing.B)   { benchmarkBytesCompare(16, false, b) }
++func BenchmarkBytesCompare32(b *testing.B)   { benchmarkBytesCompare(32, false, b) }
++func BenchmarkBytesCompare64(b *testing.B)   { benchmarkBytesCompare(64, false, b) }
++func BenchmarkBytesCompare128(b *testing.B)  { benchmarkBytesCompare(128, false, b) }
++func BenchmarkBytesCompare256(b *testing.B)  { benchmarkBytesCompare(256, false, b) }
++func BenchmarkBytesCompare512(b *testing.B)  { benchmarkBytesCompare(512, false, b) }
++func BenchmarkBytesCompare1024(b *testing.B) { benchmarkBytesCompare(1024, false, b) }
++func BenchmarkBytesCompare2048(b *testing.B) { benchmarkBytesCompare(2048, false, b) }
++
++func BenchmarkBytesCompareRandom1(b *testing.B)    { benchmarkBytesCompare(1, true, b) }
++func BenchmarkBytesCompareRandom2(b *testing.B)    { benchmarkBytesCompare(2, true, b) }
++func BenchmarkBytesCompareRandom4(b *testing.B)    { benchmarkBytesCompare(4, true, b) }
++func BenchmarkBytesCompareRandom8(b *testing.B)    { benchmarkBytesCompare(8, true, b) }
++func BenchmarkBytesCompareRandom16(b *testing.B)   { benchmarkBytesCompare(16, true, b) }
++func BenchmarkBytesCompareRandom32(b *testing.B)   { benchmarkBytesCompare(32, true, b) }
++func BenchmarkBytesCompareRandom64(b *testing.B)   { benchmarkBytesCompare(64, true, b) }
++func BenchmarkBytesCompareRandom128(b *testing.B)  { benchmarkBytesCompare(128, true, b) }
++func BenchmarkBytesCompareRandom256(b *testing.B)  { benchmarkBytesCompare(256, true, b) }
++func BenchmarkBytesCompareRandom512(b *testing.B)  { benchmarkBytesCompare(512, true, b) }
++func BenchmarkBytesCompareRandom1024(b *testing.B) { benchmarkBytesCompare(1024, true, b) }
++func BenchmarkBytesCompareRandom2048(b *testing.B) { benchmarkBytesCompare(2048, true, b) }
+diff --git a/src/runtime/asm_amd64.s b/src/runtime/asm_amd64.s
+index 3b4ca4d..89c4985 100644
+--- a/src/runtime/asm_amd64.s
++++ b/src/runtime/asm_amd64.s
+@@ -1428,7 +1428,159 @@
+ 	MOVQ	s2+24(FP), DI
+ 	MOVQ	s2+32(FP), DX
+ 	LEAQ	res+48(FP), R9
+-	JMP	runtime·cmpbody(SB)
++	CMPQ	SI, DI
++	JEQ	_allsame
++	CMPQ	BX, DX
++	MOVQ	DX, R8
++	CMOVQLT	BX, R8 // R8 = min(alen, blen) = # of bytes to compare
++	CMPQ	R8, $8
++	JB	_small
++
++	CMPQ	R8, $79
++	JA	big_loop
++_loop:
++	CMPQ	R8, $16
++	JBE	cmp_0through16
++	MOVOU	(SI), X0
++	MOVOU	(DI), X1
++	PCMPEQB X0, X1
++	PMOVMSKB X1, AX
++	XORQ	$0xffff, AX	// convert EQ to NE
++	JNE	_diff16	// branch if at least one byte is not equal
++	ADDQ	$16, SI
++	ADDQ	$16, DI
++	SUBQ	$16, R8
++	JMP	_loop
++
++diff64:
++	ADDQ	$16, SI
++	ADDQ	$16, DI
++diff48:
++	ADDQ	$16, SI
++	ADDQ	$16, DI
++diff32:
++	ADDQ	$16, SI
++	ADDQ	$16, DI
++_diff16:
++	BSFQ	AX, BX	// index of first byte that differs
++	XORQ	AX, AX
++	MOVB	(SI)(BX*1), CX
++	CMPB	CX, (DI)(BX*1)
++	SETHI	AX
++	LEAQ	-1(AX*2), AX	// convert 1/0 to +1/-1
++	MOVQ	AX, (R9)
++	RET
++
++	// 0 through 16 bytes left, alen>=8, blen>=8
++cmp_0through16:
++	CMPQ	R8, $8
++	JBE	cmp_0through8
++	MOVQ	(SI), AX
++	MOVQ	(DI), CX
++	CMPQ	AX, CX
++	JNE	_diff8
++cmp_0through8:
++	MOVQ	-8(SI)(R8*1), AX
++	MOVQ	-8(DI)(R8*1), CX
++	CMPQ	AX, CX
++	JEQ	_allsame
++
++	// AX and CX contain parts of a and b that differ.
++_diff8:
++	BSWAPQ	AX	// reverse order of bytes
++	BSWAPQ	CX
++	XORQ	AX, CX
++	BSRQ	CX, CX	// index of highest bit difference
++	SHRQ	CX, AX	// move a's bit to bottom
++	ANDQ	$1, AX	// mask bit
++	LEAQ	-1(AX*2), AX // 1/0 => +1/-1
++	MOVQ	AX, (R9)
++	RET
++
++	// 0-7 bytes in common
++_small:
++	LEAQ	(R8*8), CX	// bytes left -> bits left
++	NEGQ	CX		//  - bits lift (== 64 - bits left mod 64)
++	JEQ	_allsame
++
++	// load bytes of a into high bytes of AX
++	CMPB	SI, $0xf8
++	JA	_si_high
++	MOVQ	(SI), SI
++	JMP	_si_finish
++_si_high:
++	MOVQ	-8(SI)(R8*1), SI
++	SHRQ	CX, SI
++_si_finish:
++	SHLQ	CX, SI
++
++	// load bytes of b in to high bytes of BX
++	CMPB	DI, $0xf8
++	JA	_di_high
++	MOVQ	(DI), DI
++	JMP	_di_finish
++_di_high:
++	MOVQ	-8(DI)(R8*1), DI
++	SHRQ	CX, DI
++_di_finish:
++	SHLQ	CX, DI
++
++	BSWAPQ	SI	// reverse order of bytes
++	BSWAPQ	DI
++	XORQ	SI, DI	// find bit differences
++	JEQ	_allsame
++	BSRQ	DI, CX	// index of highest bit difference
++	SHRQ	CX, SI	// move a's bit to bottom
++	ANDQ	$1, SI	// mask bit
++	LEAQ	-1(SI*2), AX // 1/0 => +1/-1
++	MOVQ	AX, (R9)
++	RET
++
++_allsame:
++	XORQ	AX, AX
++	XORQ	CX, CX
++	CMPQ	BX, DX
++	SETGT	AX	// 1 if alen > blen
++	SETEQ	CX	// 1 if alen == blen
++	LEAQ	-1(CX)(AX*2), AX	// 1,0,-1 result
++	MOVQ	AX, (R9)
++	RET
++
++big_loop:
++	MOVOU	(SI), X0
++	MOVOU	(DI), X1
++	PCMPEQB X0, X1
++	PMOVMSKB X1, AX
++	XORQ	$0xffff, AX
++	JNE	_diff16
++
++	MOVOU	16(SI), X0
++	MOVOU	16(DI), X1
++	PCMPEQB X0, X1
++	PMOVMSKB X1, AX
++	XORQ	$0xffff, AX
++	JNE	diff32
++
++	MOVOU	32(SI), X0
++	MOVOU	32(DI), X1
++	PCMPEQB X0, X1
++	PMOVMSKB X1, AX
++	XORQ	$0xffff, AX
++	JNE	diff48
++
++	MOVOU	48(SI), X0
++	MOVOU	48(DI), X1
++	PCMPEQB X0, X1
++	PMOVMSKB X1, AX
++	XORQ	$0xffff, AX
++	JNE	diff64
++
++	ADDQ	$64, SI
++	ADDQ	$64, DI
++	SUBQ	$64, R8
++	CMPQ	R8, $64
++	JBE	loop
++	JMP	big_loop
+ 
+ // input:
+ //   SI = a

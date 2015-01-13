@@ -1,0 +1,13 @@
+Index: go/src/net/port_unix.go
+===================================================================
+--- go.orig/src/net/port_unix.go
++++ go/src/net/port_unix.go
+@@ -21,7 +21,7 @@ var onceReadServices sync.Once
+ 
+ func readServices() {
+ 	var file *file
+-	if file, servicesError = open("/etc/services"); servicesError != nil {
++	if file, servicesError = open("/usr/share/defaults/etc/services"); servicesError != nil {
+ 		return
+ 	}
+ 	for line, ok := file.readLine(); ok; line, ok = file.readLine() {
