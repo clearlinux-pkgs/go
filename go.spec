@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.5.1
-Release  : 20
+Release  : 21
 URL      : https://storage.googleapis.com/golang/go1.5.1.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.5.1.src.tar.gz
 Summary  : No detailed summary available
