@@ -1,0 +1,25 @@
+From 2847c329e7cecbd58b4a8fa8c129a176c1f7a883 Mon Sep 17 00:00:00 2001
+From: Dimitri John Ledkov <dimitri.j.ledkov@intel.com>
+Date: Fri, 21 Aug 2015 23:51:21 +0100
+Subject: [PATCH 5/6] Unshare permissions
+
+---
+ src/syscall/exec_linux_test.go | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/syscall/exec_linux_test.go b/src/syscall/exec_linux_test.go
+index 60d2734..382ac15 100644
+--- a/src/syscall/exec_linux_test.go
++++ b/src/syscall/exec_linux_test.go
+@@ -47,6 +47,8 @@ func testNEWUSERRemap(t *testing.T, uid, gid int, setgroups bool) {
+ 			data, errRead := ioutil.ReadFile("/proc/sys/kernel/unprivileged_userns_clone")
+ 			if errRead == nil && data[0] == '0' {
+ 				t.Skip("kernel prohibits user namespace in unprivileged process")
++			} else {
++				t.Skip("permissions error")
+ 			}
+ 		}
+ 
+-- 
+2.6.4
+

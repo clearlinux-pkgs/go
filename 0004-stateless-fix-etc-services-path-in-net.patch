@@ -1,0 +1,25 @@
+From 5ae679eba854f40e34aae41362f739302c84a51c Mon Sep 17 00:00:00 2001
+From: Dimitri John Ledkov <dimitri.j.ledkov@intel.com>
+Date: Fri, 21 Aug 2015 23:51:21 +0100
+Subject: [PATCH 4/6] stateless: fix /etc/services path in net
+
+---
+ src/net/port_unix.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/net/port_unix.go b/src/net/port_unix.go
+index badf8ab..5a3a20b 100644
+--- a/src/net/port_unix.go
++++ b/src/net/port_unix.go
+@@ -21,7 +21,7 @@ var onceReadServices sync.Once
+ 
+ func readServices() {
+ 	var file *file
+-	if file, servicesError = open("/etc/services"); servicesError != nil {
++	if file, servicesError = open("/usr/share/defaults/etc/services"); servicesError != nil {
+ 		return
+ 	}
+ 	for line, ok := file.readLine(); ok; line, ok = file.readLine() {
+-- 
+2.6.4
+

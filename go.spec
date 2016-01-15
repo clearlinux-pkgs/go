@@ -16,12 +16,12 @@ BuildRequires: netbase
 BuildRequires: bison flex gmp-dev pcre-dev glibc-staticdev
 BuildRequires: hostname gcc-go
 
-Patch1: stateless-test.patch
-Patch2: stateless-cacerts.patch
-Patch3: 0001-Fix-os_test-in-stateless.patch
-Patch4: stateless-port.patch
-Patch5: unshare-permissions.patch
-Patch6: skip-gccgo-tests.patch
+Patch1: 0001-stateless-fix-etc-services-path.patch
+Patch2: 0002-stateless-fix-cacerts-path.patch
+Patch3: 0003-Fix-os_test-in-stateless.patch
+Patch4: 0004-stateless-fix-etc-services-path-in-net.patch
+Patch5: 0005-Unshare-permissions.patch
+Patch6: 0006-Skip-gccgo-test.patch
 #Patch5: 655ebde9.diff
 
 # don't strip, these are not ordinary object files
