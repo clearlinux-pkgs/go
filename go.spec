@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.5.2
-Release  : 21
-URL      : https://storage.googleapis.com/golang/go1.5.2.src.tar.gz
-Source0  : https://storage.googleapis.com/golang/go1.5.2.src.tar.gz
+Version  : 1.5.3
+Release  : 22
+URL      : https://storage.googleapis.com/golang/go1.5.3.src.tar.gz
+Source0  : https://storage.googleapis.com/golang/go1.5.3.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
