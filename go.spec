@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.6
-Release  : 22
+Release  : 23
 URL      : https://storage.googleapis.com/golang/go1.6.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.6.src.tar.gz
 Summary  : No detailed summary available
