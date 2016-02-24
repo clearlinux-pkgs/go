@@ -4,24 +4,24 @@
 #
 
 Name     : go
-Version  : 1.5.3
+Version  : 1.6
 Release  : 22
-URL      : https://storage.googleapis.com/golang/go1.5.3.src.tar.gz
-Source0  : https://storage.googleapis.com/golang/go1.5.3.src.tar.gz
+URL      : https://storage.googleapis.com/golang/go1.6.src.tar.gz
+Source0  : https://storage.googleapis.com/golang/go1.6.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: glibc-staticdev
 BuildRequires: netbase
 BuildRequires: bison flex gmp-dev pcre-dev glibc-staticdev
-BuildRequires: hostname gcc-go
+BuildRequires: hostname go
 
 Patch1: 0001-stateless-fix-etc-services-path.patch
 Patch2: 0002-stateless-fix-cacerts-path.patch
 Patch3: 0003-Fix-os_test-in-stateless.patch
 Patch4: 0004-stateless-fix-etc-services-path-in-net.patch
-Patch5: 0005-Unshare-permissions.patch
-Patch6: 0006-Skip-gccgo-test.patch
+#Patch5: 0005-Unshare-permissions.patch
+#Patch6: 0006-Skip-gccgo-test.patch
 #Patch5: 655ebde9.diff
 
 # don't strip, these are not ordinary object files
@@ -47,13 +47,13 @@ in your web browser.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
+#%patch5 -p1
+#%patch6 -p1
 
 %build
 cd src
 export GOROOT_FINAL=/usr/lib/golang
-export GOROOT_BOOTSTRAP=/usr/libexec/gccgo
+export GOROOT_BOOTSTRAP=/usr/lib/golang
 bash ./all.bash
 
 %install
