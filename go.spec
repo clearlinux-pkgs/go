@@ -4,17 +4,17 @@
 #
 
 Name     : go
-Version  : 1.6
+Version  : 1.6.1
 Release  : 24
-URL      : https://storage.googleapis.com/golang/go1.6.src.tar.gz
-Source0  : https://storage.googleapis.com/golang/go1.6.src.tar.gz
+URL      : https://storage.googleapis.com/golang/go1.6.1.src.tar.gz
+Source0  : https://storage.googleapis.com/golang/go1.6.1.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: glibc-staticdev
 BuildRequires: netbase
 BuildRequires: bison flex gmp-dev pcre-dev glibc-staticdev
-BuildRequires: hostname go
+BuildRequires: hostname go sqlite-autoconf-dev
 
 Patch1: 0001-stateless-fix-etc-services-path.patch
 Patch2: 0002-stateless-fix-cacerts-path.patch
