@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.6.2
+Version  : 1.6.3
 Release  : 26
-URL      : https://storage.googleapis.com/golang/go1.6.2.src.tar.gz
-Source0  : https://storage.googleapis.com/golang/go1.6.2.src.tar.gz
+URL      : https://storage.googleapis.com/golang/go1.6.3.src.tar.gz
+Source0  : https://storage.googleapis.com/golang/go1.6.3.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
