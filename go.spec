@@ -48,10 +48,14 @@ in your web browser.
 %patch5 -p1
 
 %build
-cd src
+pushd src
 export GOROOT_FINAL=/usr/lib/golang
 export GOROOT_BOOTSTRAP=/usr/lib/golang
 bash ./all.bash
+popd
+
+# Shared libraries
+GOROOT=$(pwd) PATH=$(pwd)/bin:$PATH go install -buildmode=shared std
 
 %install
 rm -rf %{buildroot}
