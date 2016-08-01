@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.6.3
-Release  : 26
+Release  : 27
 URL      : https://storage.googleapis.com/golang/go1.6.3.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.6.3.src.tar.gz
 Summary  : No detailed summary available
