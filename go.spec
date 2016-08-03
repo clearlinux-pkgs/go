@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.6.3
-Release  : 27
+Release  : 28
 URL      : https://storage.googleapis.com/golang/go1.6.3.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.6.3.src.tar.gz
 Summary  : No detailed summary available
@@ -15,6 +15,8 @@ Requires: glibc-staticdev
 BuildRequires: netbase
 BuildRequires: bison flex gmp-dev pcre-dev glibc-staticdev
 BuildRequires: hostname go sqlite-autoconf-dev
+
+Requires: /usr/bin/gcc
 
 Patch1: 0001-stateless-fix-etc-services-path.patch
 Patch2: 0002-stateless-fix-cacerts-path.patch
