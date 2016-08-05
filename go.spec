@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.7rc5
-Release  : 1
+Release  : 2
 URL      : https://storage.googleapis.com/golang/go1.7rc5.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.7rc5.src.tar.gz
 Summary  : No detailed summary available
@@ -23,7 +23,7 @@ Patch2: 0002-stateless-fix-cacerts-path.patch
 Patch3: 0003-Fix-os_test-in-stateless.patch
 Patch4: 0004-stateless-fix-etc-services-path-in-net.patch
 Patch5: nontq.patch
-Patch6: carchive.patch
+Patch6: stackalign.patch
 
 # don't strip, these are not ordinary object files
 %global __os_install_post %{nil}
@@ -51,9 +51,7 @@ in your web browser.
 %patch5 -p1
 %patch6 -p1
 
-
 %build
-rm misc/cgo/testcarchive/carchive_test.go
 pushd src
 export GOROOT_FINAL=/usr/lib/golang
 export GOROOT_BOOTSTRAP=/usr/lib/golang
