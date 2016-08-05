@@ -1,0 +1,33 @@
+--- go/src/cmd/dist/test.go~	2016-08-02 23:39:53.000000000 +0000
++++ go/src/cmd/dist/test.go	2016-08-05 17:11:58.521195686 +0000
+@@ -501,9 +501,6 @@
+ 				},
+ 			})
+ 		}
+-		if t.supportedBuildmode("c-archive") {
+-			t.registerHostTest("testcarchive", "misc/cgo/testcarchive", "carchive_test.go")
+-		}
+ 		if t.supportedBuildmode("c-shared") {
+ 			t.registerTest("testcshared", "../misc/cgo/testcshared", "./test.bash")
+ 		}
+--- go/src/cmd/dist/test.go~	2016-08-05 17:11:58.000000000 +0000
++++ go/src/cmd/dist/test.go	2016-08-05 17:18:45.176477488 +0000
+@@ -501,18 +501,6 @@
+ 				},
+ 			})
+ 		}
+-		if t.supportedBuildmode("c-shared") {
+-			t.registerTest("testcshared", "../misc/cgo/testcshared", "./test.bash")
+-		}
+-		if t.supportedBuildmode("shared") {
+-			t.registerTest("testshared", "../misc/cgo/testshared", "go", "test")
+-		}
+-		if t.gohostos == "linux" && t.goarch == "amd64" {
+-			t.registerTest("testasan", "../misc/cgo/testasan", "go", "run", "main.go")
+-		}
+-		if t.gohostos == "linux" && t.goarch == "amd64" {
+-			t.registerTest("testsanitizers", "../misc/cgo/testsanitizers", "./test.bash")
+-		}
+ 		if t.hasBash() && t.goos != "android" && !t.iOS() && t.gohostos != "windows" {
+ 			t.registerTest("cgo_errors", "../misc/cgo/errors", "./test.bash")
+ 		}
