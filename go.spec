@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.7rc6
-Release  : 3
-URL      : https://storage.googleapis.com/golang/go1.7rc6.src.tar.gz
-Source0  : https://storage.googleapis.com/golang/go1.7rc6.src.tar.gz
+Version  : 1.7
+Release  : 4
+URL      : https://storage.googleapis.com/golang/go1.7.src.tar.gz
+Source0  : https://storage.googleapis.com/golang/go1.7.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
