@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.7
-Release  : 4
+Release  : 5
 URL      : https://storage.googleapis.com/golang/go1.7.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.7.src.tar.gz
 Summary  : No detailed summary available
