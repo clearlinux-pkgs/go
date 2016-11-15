@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.7.3
-Release  : 5
+Release  : 6
 URL      : https://storage.googleapis.com/golang/go1.7.3.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.7.3.src.tar.gz
 Summary  : No detailed summary available
@@ -23,6 +23,7 @@ Patch2: 0002-stateless-fix-cacerts-path.patch
 Patch3: 0003-Fix-os_test-in-stateless.patch
 Patch4: 0004-stateless-fix-etc-services-path-in-net.patch
 Patch5: nontq.patch
+Patch6: 0001-Update-strace-regex-for-sendfile.patch
 
 # don't strip, these are not ordinary object files
 %global __os_install_post %{nil}
@@ -48,12 +49,13 @@ in your web browser.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 pushd src
 export GOROOT_FINAL=/usr/lib/golang
 export GOROOT_BOOTSTRAP=/usr/lib/golang
-bash ./all.bash
+./make.bash --no-clean
 popd
 
 # Shared libraries
