@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.7.4
-Release  : 8
+Release  : 9
 URL      : https://storage.googleapis.com/golang/go1.7.4.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.7.4.src.tar.gz
 Summary  : No detailed summary available
@@ -23,6 +23,7 @@ Patch2: 0003-Fix-os_test-in-stateless.patch
 Patch3: 0004-stateless-fix-etc-services-path-in-net.patch
 Patch4: nontq.patch
 Patch5: 0001-Update-strace-regex-for-sendfile.patch
+Patch6: 0001-cmd-cgo-force-O0.patch
 
 # don't strip, these are not ordinary object files
 %global __os_install_post %{nil}
@@ -48,6 +49,7 @@ in your web browser.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 pushd src
