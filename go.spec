@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.8.1
-Release  : 11
+Release  : 12
 URL      : https://storage.googleapis.com/golang/go1.8.1.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.8.1.src.tar.gz
 Summary  : No detailed summary available
