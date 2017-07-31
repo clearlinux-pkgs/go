@@ -1,0 +1,12 @@
+diff --git a/src/crypto/x509/root_unix.go b/src/crypto/x509/root_unix.go
+index 65b5a5fdbc..f47b52b260 100644
+--- a/src/crypto/x509/root_unix.go
++++ b/src/crypto/x509/root_unix.go
+@@ -14,6 +14,7 @@ import (
+ // Possible directories with certificate files; stop after successfully
+ // reading at least one file from a directory.
+ var certDirectories = []string{
++	"/usr/share/ca-certs",          // Clear Linux
+ 	"/etc/ssl/certs",               // SLES10/SLES11, https://golang.org/issue/12139
+ 	"/system/etc/security/cacerts", // Android
+ 	"/usr/local/share/certs",       // FreeBSD
