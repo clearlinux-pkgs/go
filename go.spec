@@ -19,10 +19,10 @@ BuildRequires: hostname go sqlite-autoconf-dev
 Requires: /usr/bin/gcc
 
 Patch1: 0001-stateless-fix-etc-services-path.patch
-Patch2: 0003-Fix-os_test-in-stateless.patch
-Patch3: 0004-stateless-fix-etc-services-path-in-net.patch
-Patch4: nontq.patch
-Patch5: 0001-cmd-cgo-force-O0.patch
+Patch2: 0002-Fix-os_test-in-stateless.patch
+Patch3: 0003-stateless-fix-etc-services-path-in-net.patch
+Patch4: 0004-nontq.patch
+Patch5: 0005-cmd-cgo-force-O0.patch
 
 # don't strip, these are not ordinary object files
 %global __os_install_post %{nil}
