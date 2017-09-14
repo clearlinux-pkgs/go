@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.9
-Release  : 15
+Release  : 16
 URL      : https://storage.googleapis.com/golang/go1.9.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.9.src.tar.gz
 Summary  : No detailed summary available
@@ -15,8 +15,6 @@ Requires: glibc-staticdev
 BuildRequires: netbase
 BuildRequires: bison flex gmp-dev pcre-dev glibc-staticdev
 BuildRequires: hostname go sqlite-autoconf-dev
-
-Requires: /usr/bin/gcc
 
 Patch1: 0001-stateless-fix-etc-services-path.patch
 Patch2: 0002-Fix-os_test-in-stateless.patch
