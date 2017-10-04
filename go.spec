@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.9
+Version  : 1.9.1
 Release  : 17
-URL      : https://storage.googleapis.com/golang/go1.9.src.tar.gz
-Source0  : https://storage.googleapis.com/golang/go1.9.src.tar.gz
+URL      : https://storage.googleapis.com/golang/go1.9.1.src.tar.gz
+Source0  : https://storage.googleapis.com/golang/go1.9.1.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
