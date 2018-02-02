@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.9.2
-Release  : 18
+Release  : 19
 URL      : https://storage.googleapis.com/golang/go1.9.2.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.9.2.src.tar.gz
 Summary  : No detailed summary available
