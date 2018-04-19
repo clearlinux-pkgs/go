@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.10.0
-Release  : 19
-URL      : https://storage.googleapis.com/golang/go1.10.src.tar.gz
-Source0  : https://storage.googleapis.com/golang/go1.10.src.tar.gz
+Version  : 1.10.1
+Release  : 20
+URL      : https://storage.googleapis.com/golang/go1.10.1.src.tar.gz
+Source0  : https://storage.googleapis.com/golang/go1.10.1.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
