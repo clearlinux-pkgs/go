@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.10.2
-Release  : 21
+Release  : 22
 URL      : https://storage.googleapis.com/golang/go1.10.2.src.tar.gz
 Source0  : https://storage.googleapis.com/golang/go1.10.2.src.tar.gz
 Summary  : No detailed summary available
