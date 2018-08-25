@@ -1,4 +1,4 @@
 PKG_NAME := go
-URL := https://storage.googleapis.com/golang/go1.8.3.src.tar.gz
+URL := https://dl.google.com/go/go1.11.src.tar.gz
 
 include ../common/Makefile.common
