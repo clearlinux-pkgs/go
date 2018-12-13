@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.11.2
-Release  : 25
-URL      : https://dl.google.com/go/go1.11.2.src.tar.gz
-Source0  : https://dl.google.com/go/go1.11.2.src.tar.gz
+Version  : 1.11.3
+Release  : 26
+URL      : https://dl.google.com/go/go1.11.3.src.tar.gz
+Source0  : https://dl.google.com/go/go1.11.3.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -33,6 +33,9 @@ Patch6: 0006-add-clear-trust-store.patch
 %define __find_requires %{nil}
 %global __spec_install_post /usr/lib/rpm/check-rpaths   /usr/lib/rpm/check-buildroot  \
   /usr/lib/rpm/brp-compress
+
+# workaround to not generate go-abi package since we don't generate abifiles.list.
+%define abi_package %{nil}
 
 %description
 This is the source code repository for the Go programming language.
