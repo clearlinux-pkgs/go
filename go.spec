@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.13.10
-Release  : 49
-URL      : https://dl.google.com/go/go1.13.10.src.tar.gz
-Source0  : https://dl.google.com/go/go1.13.10.src.tar.gz
+Version  : 1.14.5
+Release  : 50
+URL      : https://dl.google.com/go/go1.14.5.src.tar.gz
+Source0  : https://dl.google.com/go/go1.14.5.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -18,10 +18,9 @@ BuildRequires: hostname go sqlite-autoconf-dev
 
 Patch1: 0001-stateless-fix-etc-services-path.patch
 Patch2: 0002-Fix-os_test-in-stateless.patch
-Patch3: 0003-stateless-fix-etc-services-path-in-net.patch
-Patch4: 0004-nontq.patch
-Patch5: 0005-cmd-cgo-force-O0.patch
-Patch6: 0006-add-clear-trust-store.patch
+Patch3: 0003-golang-stateless-fix-etc-services-path-in-net.patch
+Patch4: 0004-don-t-use-ntq.patch
+Patch5: 0005-Prepend-Clear-Linux-trust-store-location.patch
 
 # don't strip, these are not ordinary object files
 %global __os_install_post %{nil}
@@ -50,7 +49,6 @@ in your web browser.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %build
 pushd src

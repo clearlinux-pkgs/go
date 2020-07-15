@@ -1,4 +1,4 @@
-From 8d853d67d22a5d6022f78ee29fc4153ea861d32c Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Tim Pepper <timothy.c.pepper@linux.intel.com>
 Date: Thu, 16 Feb 2017 13:54:50 -0800
 Subject: [PATCH] golang stateless: fix /etc/services path in net
@@ -11,10 +11,10 @@ Signed-off-by: Tim Pepper <timothy.c.pepper@linux.intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/net/port_unix.go b/src/net/port_unix.go
-index 868d1e4..ee16b43 100644
+index 4fdd9a3..5f2d7c9 100644
 --- a/src/net/port_unix.go
 +++ b/src/net/port_unix.go
-@@ -13,7 +13,7 @@ import "sync"
+@@ -16,7 +16,7 @@ import (
  var onceReadServices sync.Once
  
  func readServices() {
@@ -23,6 +23,3 @@ index 868d1e4..ee16b43 100644
  	if err != nil {
  		return
  	}
--- 
-2.9.3
-

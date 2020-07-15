@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Arjan van de Ven <arjan@linux.intel.com>
+Date: Sun, 6 Mar 2016 10:59:25 -0500
+Subject: [PATCH] don't use ntq
+
+---
+ src/runtime/memclr_amd64.s | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/runtime/memclr_amd64.s b/src/runtime/memclr_amd64.s
+index d79078f..c35ddb8 100644
+--- a/src/runtime/memclr_amd64.s
++++ b/src/runtime/memclr_amd64.s
+@@ -70,8 +70,6 @@ loop_preheader_avx2:
+ 	// For smaller sizes MOVNTDQ may be faster or slower depending on hardware.
+ 	// For larger sizes it is always faster, even on dual Xeons with 30M cache.
+ 	// TODO take into account actual LLC size. E. g. glibc uses LLC size/2.
+-	CMPQ    BX, $0x2000000
+-	JAE     loop_preheader_avx2_huge
+ loop_avx2:
+ 	VMOVDQU	Y0, 0(DI)
+ 	VMOVDQU	Y0, 32(DI)

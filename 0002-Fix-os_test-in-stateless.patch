@@ -1,7 +1,7 @@
-From 02331a25696140177fbd34ddeeb87c0fc0970c97 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Athenas Jimenez <athenas.jimenez.gonzalez@intel.com>
 Date: Wed, 20 May 2015 17:18:14 +0000
-Subject: [PATCH 3/6] Fix os_test in stateless
+Subject: [PATCH] Fix os_test in stateless
 
 Change the dir /etc -> /usr/share/defaults/etc
 The file "hosts" remplaced by "shadow"
@@ -12,10 +12,10 @@ Signed-off-by: Athenas Jimenez <athenas.jimenez.gonzalez@intel.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/os/os_test.go b/src/os/os_test.go
-index 6b72674..2d92675 100644
+index 31b3e67..2a9325c 100644
 --- a/src/os/os_test.go
 +++ b/src/os/os_test.go
-@@ -87,10 +87,10 @@ var sysdir = func() *sysDir {
+@@ -99,10 +99,10 @@ var sysdir = func() *sysDir {
  		}
  	}
  	return &sysDir{
@@ -28,6 +28,3 @@ index 6b72674..2d92675 100644
  			"passwd",
  		},
  	}
--- 
-2.6.4
-
