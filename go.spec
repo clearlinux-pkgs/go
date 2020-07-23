@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.13.14
-Release  : 52
+Release  : 53
 URL      : https://dl.google.com/go/go1.13.14.src.tar.gz
 Source0  : https://dl.google.com/go/go1.13.14.src.tar.gz
 Summary  : No detailed summary available
@@ -54,6 +54,7 @@ in your web browser.
 pushd src
 export GOROOT_FINAL=/usr/lib/golang
 export GOROOT_BOOTSTRAP=/usr/lib/golang
+export GO_LDFLAGS="-buildmode=pie"
 ./make.bash --no-clean
 popd
 
