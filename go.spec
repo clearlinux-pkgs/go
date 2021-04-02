@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.15.10
-Release  : 59
-URL      : https://dl.google.com/go/go1.15.10.src.tar.gz
-Source0  : https://dl.google.com/go/go1.15.10.src.tar.gz
+Version  : 1.15.11
+Release  : 60
+URL      : https://dl.google.com/go/go1.15.11.src.tar.gz
+Source0  : https://dl.google.com/go/go1.15.11.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
