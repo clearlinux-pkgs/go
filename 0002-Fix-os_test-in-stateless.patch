@@ -12,7 +12,7 @@ Signed-off-by: Athenas Jimenez <athenas.jimenez.gonzalez@intel.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/os/os_test.go b/src/os/os_test.go
-index 31b3e67..2a9325c 100644
+index e8c6451..4d21edc 100644
 --- a/src/os/os_test.go
 +++ b/src/os/os_test.go
 @@ -99,10 +99,10 @@ var sysdir = func() *sysDir {
