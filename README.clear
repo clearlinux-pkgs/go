@@ -1,0 +1,40 @@
+Holding on go 1.15.x
+============================================================
+Current Issue to be resolved before moving to 1.16.x
+- clr-installer needs gotk3 v0.6.0
+  https://github.com/gotk3/gotk3/pull/730
+
+- containered needs to be updated for compat mode
+- docker needs to be updated
+
+
+============================================================
+Rebuilds Required
+============================================================
+The list of packages that should be rebuilt after bumping
+the version of golang are:
+    - abireport
+    - clr-installer
+    - cni
+    - cni-plugins
+    - containerd
+    - cri-o
+    - cri-tools
+    - docker
+    - docker-cli
+    - dyskctl
+    - faas-cli
+    - golang-github-cpuguy83-go-md2man
+    - helm
+    - hub
+    - hugo
+    - kata-proxy
+    - kata-runtime
+    - kata-shim
+    - kubernetes
+    - kubernetes-migration-1.18
+    - mixer-tools
+    - rclone
+    - restic
+    - runc
+    - traefik
