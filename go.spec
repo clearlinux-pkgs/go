@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.16.5
-Release  : 62
+Release  : 63
 URL      : https://dl.google.com/go/go1.16.5.src.tar.gz
 Source0  : https://dl.google.com/go/go1.16.5.src.tar.gz
 Summary  : No detailed summary available
