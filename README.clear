@@ -14,6 +14,7 @@ Rebuilds Required
 The list of packages that should be rebuilt after bumping
 the version of golang are:
     - abireport
+    - amazon-ssm-agent
     - clr-installer
     - cni
     - cni-plugins
