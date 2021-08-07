@@ -35,6 +35,7 @@ the version of golang are:
     - kubernetes
     - kubernetes-migration-1.18
     - mixer-tools
+    - podman
     - rclone
     - restic
     - runc
