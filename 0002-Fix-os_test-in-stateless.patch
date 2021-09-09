@@ -15,7 +15,7 @@ diff --git a/src/os/os_test.go b/src/os/os_test.go
 index e8c6451..4d21edc 100644
 --- a/src/os/os_test.go
 +++ b/src/os/os_test.go
-@@ -99,10 +99,10 @@ var sysdir = func() *sysDir {
+@@ -101,10 +101,10 @@ var sysdir = func() *sysDir {
  		}
  	}
  	return &sysDir{
