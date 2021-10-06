@@ -25,6 +25,7 @@ the version of golang are:
     - docker-cli
     - dyskctl
     - faas-cli
+    - gh
     - golang-github-cpuguy83-go-md2man
     - helm
     - hub
