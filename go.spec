@@ -4,8 +4,8 @@
 #
 
 Name     : go
-Version  : 1.18.0
-Release  : 70
+Version  : 1.18
+Release  : 71
 URL      : https://go.dev/dl/go1.18.src.tar.gz
 Source0  : https://go.dev/dl/go1.18.src.tar.gz
 Summary  : No detailed summary available
