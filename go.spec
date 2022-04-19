@@ -55,7 +55,7 @@ pushd src
 export GOROOT_FINAL=/usr/lib/golang
 export GOROOT_BOOTSTRAP=/usr/lib/golang
 export GO_LDFLAGS="-buildmode=pie"
-./make.bash --no-clean
+./make.bash
 popd
 
 # Shared libraries
