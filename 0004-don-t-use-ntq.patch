@@ -11,7 +11,7 @@ diff --git a/src/runtime/memclr_amd64.s b/src/runtime/memclr_amd64.s
 index d79078f..c35ddb8 100644
 --- a/src/runtime/memclr_amd64.s
 +++ b/src/runtime/memclr_amd64.s
-@@ -72,8 +72,6 @@ loop_preheader_avx2:
+@@ -71,8 +71,6 @@ loop_preheader_avx2:
  	// For smaller sizes MOVNTDQ may be faster or slower depending on hardware.
  	// For larger sizes it is always faster, even on dual Xeons with 30M cache.
  	// TODO take into account actual LLC size. E. g. glibc uses LLC size/2.

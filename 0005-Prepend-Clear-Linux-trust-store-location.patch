@@ -11,9 +11,9 @@ diff --git a/src/crypto/x509/root_linux.go b/src/crypto/x509/root_linux.go
 index ad6ce5cae79d..23315c23f4d4 100644
 --- a/src/crypto/x509/root_linux.go
 +++ b/src/crypto/x509/root_linux.go
-@@ -17,6 +17,7 @@ var certFiles = []string{
- // Possible directories with certificate files; stop after successfully
- // reading at least one file from a directory.
+@@ -16,6 +16,7 @@ var certFiles = []string{
+ 
+ // Possible directories with certificate files; all will be read.
  var certDirectories = []string{
 +	"/var/cache/ca-certs/anchors",  // Clear Linux
  	"/etc/ssl/certs",               // SLES10/SLES11, https://golang.org/issue/12139
