@@ -15,9 +15,6 @@ golang-github-cpuguy83-go-md2man
 helm
 hub
 hugo
-kata-proxy
-kata-runtime
-kata-shim
 kubernetes
 kubernetes-migration-1.18
 mixer-tools
