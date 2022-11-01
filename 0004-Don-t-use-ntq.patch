@@ -1,4 +1,4 @@
-From 074029ad9acbd5dc18047eddb3d9e03813ee8be1 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: William Douglas <william.douglas@intel.com>
 Date: Fri, 26 Aug 2022 14:11:51 -0700
 Subject: [PATCH] Don't use ntq
@@ -20,6 +20,3 @@ index 19bfa6f..d3ffec4 100644
  
  loop_avx2:
  	VMOVDQU	Y0, 0(DI)
--- 
-2.37.2
-

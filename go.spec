@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.19.2
+Version  : 1.19.3
 Release  : 78
-URL      : https://go.dev/dl/go1.19.2.src.tar.gz
-Source0  : https://go.dev/dl/go1.19.2.src.tar.gz
+URL      : https://go.dev/dl/go1.19.3.src.tar.gz
+Source0  : https://go.dev/dl/go1.19.3.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -19,7 +19,7 @@ BuildRequires: hostname go sqlite-autoconf-dev
 Patch1: 0001-stateless-fix-etc-services-path.patch
 Patch2: 0002-Fix-os_test-in-stateless.patch
 Patch3: 0003-golang-stateless-fix-etc-services-path-in-net.patch
-Patch4: 0004-don-t-use-ntq.patch
+Patch4: 0004-Don-t-use-ntq.patch
 Patch5: 0005-Prepend-Clear-Linux-trust-store-location.patch
 
 # don't strip, these are not ordinary object files
