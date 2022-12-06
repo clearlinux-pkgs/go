@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.19.4
-Release  : 79
+Release  : 80
 URL      : https://go.dev/dl/go1.19.4.src.tar.gz
 Source0  : https://go.dev/dl/go1.19.4.src.tar.gz
 Summary  : No detailed summary available
