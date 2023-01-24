@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.19.5
-Release  : 80
+Release  : 81
 URL      : https://go.dev/dl/go1.19.5.src.tar.gz
 Source0  : https://go.dev/dl/go1.19.5.src.tar.gz
 Summary  : No detailed summary available
