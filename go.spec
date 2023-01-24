@@ -51,6 +51,7 @@ in your web browser.
 %patch5 -p1
 
 %build
+export CFLAGS="$CFLAGS -g2"
 pushd src
 export GOROOT_FINAL=/usr/lib/golang
 export GOROOT_BOOTSTRAP=/usr/lib/golang
