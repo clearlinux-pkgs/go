@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.19.9
+Version  : 1.19.10
 Release  : 84
-URL      : https://go.dev/dl/go1.19.9.src.tar.gz
-Source0  : https://go.dev/dl/go1.19.9.src.tar.gz
+URL      : https://go.dev/dl/go1.19.10.src.tar.gz
+Source0  : https://go.dev/dl/go1.19.10.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
