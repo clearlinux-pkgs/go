@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.19.12
-Release  : 84
-URL      : https://go.dev/dl/go1.19.12.src.tar.gz
-Source0  : https://go.dev/dl/go1.19.12.src.tar.gz
+Version  : 1.21.0
+Release  : 85
+URL      : https://go.dev/dl/go1.21.0.src.tar.gz
+Source0  : https://go.dev/dl/go1.21.0.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -44,11 +44,11 @@ in your web browser.
 
 %prep
 %setup -q -n go
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 unset CLEAR_DEBUG_TERSE
