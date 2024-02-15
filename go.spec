@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.21.0
-Release  : 85
-URL      : https://go.dev/dl/go1.21.0.src.tar.gz
-Source0  : https://go.dev/dl/go1.21.0.src.tar.gz
+Version  : 1.22.0
+Release  : 87
+URL      : https://go.dev/dl/go1.22.0.src.tar.gz
+Source0  : https://go.dev/dl/go1.22.0.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -68,8 +68,8 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/lib/golang
 mkdir -p %{buildroot}/usr/bin
 cp -a *  %{buildroot}/usr/lib/golang
-ln -s /usr/lib/golang/bin/go %{buildroot}/usr/bin/go
-ln -s /usr/lib/golang/bin/gofmt %{buildroot}/usr/bin/gofmt
+ln -s ../lib/golang/bin/go %{buildroot}/usr/bin/go
+ln -s ../lib/golang/bin/gofmt %{buildroot}/usr/bin/gofmt
 
 %files
 %defattr(-,root,root,-)
