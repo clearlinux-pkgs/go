@@ -1,7 +1,7 @@
-From 281c9d54d435676ac27d7192be475f171fa3f293 Mon Sep 17 00:00:00 2001
+From d8301b5e9b31eb2548995660bdb8425ee75cb83a Mon Sep 17 00:00:00 2001
 From: William Douglas <william.douglas@intel.com>
 Date: Thu, 15 Feb 2024 11:09:36 -0800
-Subject: [PATCH] Prepend Clear Linux trust store location
+Subject: [PATCH 5/5] Prepend Clear Linux trust store location
 
 Signed-off-by: William Douglas <william.douglas@intel.com>
 ---
@@ -21,5 +21,5 @@ index 8e79ccb..6954cb3 100644
  	"/etc/pki/tls/certs", // Fedora/RHEL
  }
 -- 
-2.43.0
+2.47.1
 

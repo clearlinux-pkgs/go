@@ -4,10 +4,10 @@
 #
 
 Name     : go
-Version  : 1.22.0
-Release  : 87
-URL      : https://go.dev/dl/go1.22.0.src.tar.gz
-Source0  : https://go.dev/dl/go1.22.0.src.tar.gz
+Version  : 1.23.4
+Release  : 88
+URL      : https://go.dev/dl/go1.23.4.src.tar.gz
+Source0  : https://go.dev/dl/go1.23.4.src.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -16,7 +16,7 @@ BuildRequires: netbase
 BuildRequires: bison flex gmp-dev pcre-dev glibc-staticdev
 BuildRequires: hostname go sqlite-autoconf-dev
 
-Patch1: 0001-stateless-fix-etc-services-path.patch
+Patch1: 0001-stateless-services-file-path-fix.patch
 Patch2: 0002-Fix-os_test-in-stateless.patch
 Patch3: 0003-golang-stateless-fix-etc-services-path-in-net.patch
 Patch4: 0004-Don-t-use-ntq.patch

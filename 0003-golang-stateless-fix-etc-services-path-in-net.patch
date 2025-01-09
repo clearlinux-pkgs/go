@@ -1,7 +1,7 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From 8d25533f9884fe406de537ec04ca7f216059bb4c Mon Sep 17 00:00:00 2001
 From: Tim Pepper <timothy.c.pepper@linux.intel.com>
 Date: Thu, 16 Feb 2017 13:54:50 -0800
-Subject: [PATCH] golang stateless: fix /etc/services path in net
+Subject: [PATCH 3/5] golang stateless: fix /etc/services path in net
 
 Forward port of prior patch from Dimitri John Ledkov in 2015.
 
@@ -11,7 +11,7 @@ Signed-off-by: Tim Pepper <timothy.c.pepper@linux.intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/net/port_unix.go b/src/net/port_unix.go
-index 4fdd9a3..5f2d7c9 100644
+index df73dba..84e24ea 100644
 --- a/src/net/port_unix.go
 +++ b/src/net/port_unix.go
 @@ -16,7 +16,7 @@ import (
@@ -23,3 +23,6 @@ index 4fdd9a3..5f2d7c9 100644
  	if err != nil {
  		return
  	}
+-- 
+2.47.1
+
