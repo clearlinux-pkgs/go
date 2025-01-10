@@ -1,8 +1,10 @@
 abireport
 amazon-ssm-agent
+buildx
 clr-installer
 cni
 cni-plugins
+compose
 containerd
 cri-o
 cri-tools
@@ -11,10 +13,12 @@ docker-cli
 dyskctl
 faas-cli
 gh
+git-lfs
 golang-github-cpuguy83-go-md2man
 helm
 hub
 hugo
+ipp-usb
 kubernetes
 kubernetes-migration-1.18
 mixer-tools
@@ -22,3 +26,4 @@ podman
 rclone
 restic
 runc
+syncthing
