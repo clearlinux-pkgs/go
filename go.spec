@@ -14,7 +14,7 @@ License  : BSD-3-Clause
 Requires: glibc-staticdev
 BuildRequires: netbase
 BuildRequires: bison flex gmp-dev pcre-dev glibc-staticdev
-BuildRequires: hostname go sqlite-autoconf-dev
+BuildRequires: hostname go sqlite-autoconf-dev tiff-dev
 
 Patch1: 0001-stateless-services-file-path-fix.patch
 Patch2: 0002-Fix-os_test-in-stateless.patch
