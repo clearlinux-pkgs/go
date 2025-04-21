@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.24.2
-Release  : 89
+Release  : 90
 URL      : https://go.dev/dl/go1.24.2.src.tar.gz
 Source0  : https://go.dev/dl/go1.24.2.src.tar.gz
 Summary  : No detailed summary available
