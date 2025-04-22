@@ -5,7 +5,7 @@
 
 Name     : go
 Version  : 1.24.2
-Release  : 90
+Release  : 91
 URL      : https://go.dev/dl/go1.24.2.src.tar.gz
 Source0  : https://go.dev/dl/go1.24.2.src.tar.gz
 Summary  : No detailed summary available
@@ -70,6 +70,7 @@ mkdir -p %{buildroot}/usr/bin
 cp -a *  %{buildroot}/usr/lib/golang
 ln -s ../lib/golang/bin/go %{buildroot}/usr/bin/go
 ln -s ../lib/golang/bin/gofmt %{buildroot}/usr/bin/gofmt
+rm -f %{buildroot}/usr/lib/golang/src/debug/elf/testdata/libtiffxx.so_
 
 %files
 %defattr(-,root,root,-)
